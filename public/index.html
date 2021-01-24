@@ -55,7 +55,7 @@
     </div>
 
     <script>
-      fetch("http://localhost:8080/last")
+      fetch("https://prime-number-discriminator.herokuapp.com/last")
         .then(async (response) => {
           const result = await response.json()
           result.forEach((element) => {
