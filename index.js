@@ -60,8 +60,11 @@ app.post("/memo", (req, res) => {
     let result
 
     memo = req.body.text
-    if(memo != parseInt(memo) || memo < 1)
+    if(memo != parseInt(memo) || memo < 1) {
         result = "Enter a positive integer."
+        alert(result)
+        return
+    }
     else if(memo == 1)
         result = "False"
     else if(memo <= 3)
@@ -81,7 +84,7 @@ app.post("/memo", (req, res) => {
         else
             result = "False"
     }
-    
+
     Prime
         .findOneAndUpdate(
             { num: memo }, 
