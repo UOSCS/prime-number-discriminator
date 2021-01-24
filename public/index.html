@@ -76,7 +76,7 @@
           })
         })
 
-      fetch("http://localhost:8080/rank")
+      fetch("https://prime-number-discriminator.herokuapp.com/rank")
         .then(async (response) => {
           const result = await response.json()
           let ranking = 1
@@ -113,7 +113,7 @@
         .addEventListener("click", () => {
           const text = document.getElementById("input").value
           // POST
-          fetch("http://localhost:8080/memo", {
+          fetch("https://prime-number-discriminator.herokuapp.com/memo", {
             method: "POST",
             body: JSON.stringify({
               text: text,
