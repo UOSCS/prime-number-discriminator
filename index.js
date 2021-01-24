@@ -1,7 +1,8 @@
 // refer: https://expressjs.com/ko/starter/hello-world.html
 const mongoose = require("mongoose")
-const uri = process.env.MONGODB_URI
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
+const atlasUri = process.env.MONGODB_URI
+const localUri = "mongodb://localhost:27017/primeDB"
+mongoose.connect(atlasUri || localUri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const express = require("express")
 const cors = require("cors")
@@ -62,6 +63,7 @@ app.post("/memo", (req, res) => {
     memo = req.body.text
     if(memo != parseInt(memo) || memo < 1) {
         result = "Enter a positive integer."
+        res.json(result)
         return
     }
     else if(memo == 1)
@@ -101,5 +103,5 @@ app.post("/memo", (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log(`Server is running...`)
+    console.log(`App listening at http://localhost:${port}`)
 })

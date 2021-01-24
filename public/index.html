@@ -124,10 +124,8 @@
           })
             .then(async (response) => {
               const element = await response.json()
-              if (element.result[0] == 'E') {
-                alert(element.result)
-                return
-              }
+              if(typeof(element) == 'string')
+                throw element
               const newTr = document.createElement("tr")
               const newTimeTd = document.createElement("td")
               const newNumTd = document.createElement("td")
@@ -149,6 +147,7 @@
               parent.insertBefore(newTr, firstChild)
               parent.removeChild(lastChild)
             })
+            .catch (err => alert(err))
         })
     </script>
   </body>
