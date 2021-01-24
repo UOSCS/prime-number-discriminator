@@ -10,7 +10,7 @@ require('moment-timezone')
 moment.tz.setDefault("Asia/Seoul")
 const app = express()
 
-const port = 8080
+const port = process.env.PORT || 8080
 
 let memo = "no memo"
 
@@ -81,9 +81,7 @@ app.post("/memo", (req, res) => {
         else
             result = "False"
     }
-
-    console.log(`result: ${result}`)
-
+    
     Prime
         .findOneAndUpdate(
             { num: memo }, 
@@ -98,27 +96,8 @@ app.post("/memo", (req, res) => {
                 }
             }
         )
-
-    // new Promise((resolve, reject) => {
-    //         Prime.create({num: memo, outcome: result, count: 0}, function (err, res) {
-    //             if (err)
-    //                 console.log(err)
-    //             else
-    //                 console.log(res)
-    //         })
-            
-    //         resolve()
-    //     })
-    //     .then(() => {
-    //             Prime.findOneAndUpdate({num: memo}, {num: memo, outcome: result, count: count + 1}, {upsert: true}, function (err, value) {
-    //                 if (err)
-    //                     console.log(err)
-    //                 else
-    //                     res.json(value)
-    //             })
-    //         })
 })
 
-app.listen(process.env.PORT || port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+app.listen(port, () => {
+    console.log(`Server is running...`)
 })
