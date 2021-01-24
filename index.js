@@ -1,6 +1,7 @@
 // refer: https://expressjs.com/ko/starter/hello-world.html
 const mongoose = require("mongoose")
-mongoose.connect("mongodb://localhost:27017/primeDB", { useNewUrlParser: true, useUnifiedTopology: true })
+const uri = process.env.MONGODB_URI
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
 
 const express = require("express")
 const cors = require("cors")
