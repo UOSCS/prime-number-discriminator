@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- css -->
+    <link rel="stylesheet" href="/css/styles.css" />
+    <!-- favicon -->
+    <link rel="icon" href="/img/favicon.ico" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&family=Montserrat:ital,wght@1,300&family=Sacramento&display=swap"
+      rel="stylesheet"
+    />
+    <title>Prime number discriminator</title>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <h1 class="title">Prime number discriminator</h1>
+      <p class="description">
+        Write a number below to determine if it is a prime number.
+      </p>
+      <p class="description">
+        Then press the <span>Result</span> button to check the result.
+      </p>
+      <input id="input" type="text" name="" />
+      <button id="btn">Result</button>
+      <div class="container">
+        <table class="table item">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Number</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody id="last"></tbody>
+        </table>
+
+        <table class="table item">
+          <thead>
+            <tr>
+              <th>Ranking</th>
+              <th>Number</th>
+              <th>Outcome</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody id="rank"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      fetch("http://localhost:8080/last")
+        .then(async (response) => {
+          const result = await response.json()
+          result.forEach((element) => {
+            const parent = document.getElementById("last")
+            const newTr = document.createElement("tr")
+            const newTimeTd = document.createElement("td")
+            const newNumTd = document.createElement("td")
+            const newOutcomeTd = document.createElement("td")
+            const timeTdText = document.createTextNode(element.time.slice(11, 16))
+            const numTdText = document.createTextNode(element.num)
+            const outcomeTdText = document.createTextNode(element.outcome)
+
+            newTimeTd.appendChild(timeTdText)
+            newNumTd.appendChild(numTdText)
+            newOutcomeTd.appendChild(outcomeTdText)
+            newTr.appendChild(newTimeTd)
+            newTr.appendChild(newNumTd)
+            newTr.appendChild(newOutcomeTd)
+
+            parent.appendChild(newTr)
+          })
+        })
+
+      fetch("http://localhost:8080/rank")
+        .then(async (response) => {
+          const result = await response.json()
+          let ranking = 1
+          result.forEach((element) => {
+            const parent = document.getElementById("rank")
+            const newTr = document.createElement("tr")
+            const newRankingTd = document.createElement("td")
+            const newNumTd = document.createElement("td")
+            const newOutcomeTd = document.createElement("td")
+            const newCountTd = document.createElement("td")
+            const rankingTdText = document.createTextNode(ranking)
+            const numTdText = document.createTextNode(element.num)
+            const outcomeTdText = document.createTextNode(element.outcome)
+            const countTdText = document.createTextNode(element.count)
+
+            newRankingTd.appendChild(rankingTdText)
+            newNumTd.appendChild(numTdText)
+            newOutcomeTd.appendChild(outcomeTdText)
+            newCountTd.appendChild(countTdText)
+
+            newTr.appendChild(newRankingTd)
+            newTr.appendChild(newNumTd)
+            newTr.appendChild(newOutcomeTd)
+            newTr.appendChild(newCountTd)
+
+            parent.appendChild(newTr)
+
+            ranking = ranking + 1
+          })
+        })
+
+      document
+        .getElementById("btn")
+        .addEventListener("click", () => {
+          const text = document.getElementById("input").value
+          // POST
+          fetch("http://localhost:8080/memo", {
+            method: "POST",
+            body: JSON.stringify({
+              text: text,
+            }),
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then(async (response) => {
+              const element = await response.json()
+              const newTr = document.createElement("tr")
+              const newTimeTd = document.createElement("td")
+              const newNumTd = document.createElement("td")
+              const newOutcomeTd = document.createElement("td")
+              const timeTdText = document.createTextNode(element.time.slice(11, 16))
+              const numTdText = document.createTextNode(element.num)
+              const outcomeTdText = document.createTextNode(element.outcome)
+              const parent = document.getElementById("last")
+              const firstChild = document.querySelector("#last > tr")
+              const lastChild = document.querySelectorAll("#last > tr")[9]
+
+              newTimeTd.appendChild(timeTdText)
+              newNumTd.appendChild(numTdText)
+              newOutcomeTd.appendChild(outcomeTdText)
+              newTr.appendChild(newTimeTd)
+              newTr.appendChild(newNumTd)
+              newTr.appendChild(newOutcomeTd)
+
+              parent.insertBefore(newTr, firstChild)
+              parent.removeChild(lastChild)
+            })
+        })
+    </script>
+  </body>
+</html>
