@@ -62,7 +62,6 @@ app.post("/memo", (req, res) => {
     memo = req.body.text
     if(memo != parseInt(memo) || memo < 1) {
         result = "Enter a positive integer."
-        alert(result)
         return
     }
     else if(memo == 1)
