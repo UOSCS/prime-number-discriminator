@@ -124,8 +124,10 @@
           })
             .then(async (response) => {
               const element = await response.json()
-              if (element.result[0] == 'E')
+              if (element.result[0] == 'E') {
+                alert(element.result)
                 return
+              }
               const newTr = document.createElement("tr")
               const newTimeTd = document.createElement("td")
               const newNumTd = document.createElement("td")
