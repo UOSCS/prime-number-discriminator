@@ -1,18 +1,18 @@
-// refer: https://expressjs.com/ko/starter/hello-world.html
+// .env파일 내용을 process.env로 불러오기
+require('dotenv').config()
+// Node.js <-> MongoDB 연결
 const mongoose = require("mongoose")
 const atlasUri = process.env.MONGODB_URI
-const localUri = "mongodb://localhost:27017/primeDB"
-mongoose.connect(atlasUri || localUri, { useNewUrlParser: true, useUnifiedTopology: true })
-
+mongoose.connect(atlasUri, { useNewUrlParser: true, useUnifiedTopology: true })
 const express = require("express")
 const cors = require("cors")
+// For 한국 시간 표시
 const moment = require("moment")
 require('moment-timezone')
 moment.tz.setDefault("Asia/Seoul")
+
 const app = express()
-
-const port = process.env.PORT || 8080
-
+const port = process.env.PORT
 let memo = "no memo"
 
 const primeSchema = new mongoose.Schema({
@@ -35,29 +35,41 @@ app.get("/", (req, res) => {
 
 app.get("/last", (req, res) => {
     Prime
-        .find(function (err, value) {
-            if (err)
-                console.log(err)
-            else
-                res.json(value)
-        })
-        .sort({ time: -1, _id: -1 })
-        .limit(10)
+    .find(function (err, value) {
+        if (err)
+            console.log(err)
+        else
+            res.json(value)
+    })
+    .sort({ time: -1, _id: -1 })
+    .limit(10)
 })
 
 app.get("/rank", (req, res) => {
     Prime
-        .find(function (err, value) {
-            if (err)
-                console.log(err)
-            else
-                res.json(value)
-        })
-        .sort({ count: -1 })
-        .limit(10)
+    .find(function (err, value) {
+        if (err)
+            console.log(err)
+        else
+            res.json(value)
+    })
+    .sort({ count: -1 })
+    .limit(10)
 })
 
-app.post("/memo", (req, res) => {
+app.get("/update_rank", (res, req) => {
+    Prime
+    .find(function (err, value) {
+        if (err)
+            console.log(err)
+        else
+            res.json(value)
+    })
+    .sort({ count: -1 })
+    .limit(10)
+})
+
+app.post("/update_last", (req, res) => {
     let result
 
     memo = req.body.text
@@ -87,19 +99,19 @@ app.post("/memo", (req, res) => {
     }
 
     Prime
-        .findOneAndUpdate(
-            { num: memo }, 
-            { outcome: result, $inc: { count: 1 }, time: moment().format("YYYY-MM-DD HH:mm") }, 
-            { upsert: true, setDefaultsOnInsert: true, new: true }, 
-            function (err, value) {
-                if (err)
-                    console.log(err)
-                else {
-                    res.json(value)
-                    console.log(value)
-                }
+    .findOneAndUpdate(
+        { num: memo }, 
+        { outcome: result, $inc: { count: 1 }, time: moment().format("YYYY-MM-DD HH:mm") }, 
+        { upsert: true, setDefaultsOnInsert: true, new: true }, 
+        function (err, value) {
+            if (err)
+                console.log(err)
+            else {
+                res.json(value)
+                console.log(value)
             }
-        )
+        }
+    )
 })
 
 app.listen(port, () => {
