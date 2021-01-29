@@ -57,18 +57,6 @@ app.get("/rank", (req, res) => {
     .limit(10)
 })
 
-app.get("/update_rank", (res, req) => {
-    Prime
-    .find(function (err, value) {
-        if (err)
-            console.log(err)
-        else
-            res.json(value)
-    })
-    .sort({ count: -1 })
-    .limit(10)
-})
-
 app.post("/update_last", (req, res) => {
     let result
 
