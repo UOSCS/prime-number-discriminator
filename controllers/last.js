@@ -1,6 +1,6 @@
 const Prime = require("../models/prime")
 
-exports.addLast = (req, res) => {
+exports.getLast = (req, res) => {
     Prime
     .find(function (err, value) {
         if (err)

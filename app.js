@@ -8,11 +8,9 @@ mongoose.connect(atlasUri, { useNewUrlParser: true, useUnifiedTopology: true })
 const router = require("./routes/route")
 // Express
 const express = require("express")
+const app = express()
 // Cors
 const cors = require("cors")
-
-const app = express()
-const port = process.env.PORT
 
 app.set("views", __dirname + "/views")
 app.set("view engine", "ejs")
@@ -22,6 +20,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use("/", router)
 
-app.listen(port, () => {
-    console.log(`App listening at http://localhost:${port}`)
+app.listen(process.env.PORT, () => {
+    console.log(`App listening at http://localhost:${process.env.PORT}`)
 })
