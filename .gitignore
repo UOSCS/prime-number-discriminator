@@ -7,8 +7,5 @@ node_modules/
 # scss file
 *.scss
 
-# css.map file
-*.map
-
 # package-lock
 package-lock.json
