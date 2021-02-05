@@ -2,8 +2,14 @@
 
 https://prime-number-discriminator.herokuapp.com/
 
+### Front
+- HTML
+- SCSS
+- CSS
+- JavaScript
+
 ### Back
-- node.js
+- Node.js
 
 ### DB
 - MongoDB
