@@ -37,18 +37,16 @@ resultBtn
 
         updateLast(parent, element)
     })
-    .catch (err => alert(err))
     .then(() => {
-        const parent = document.getElementById("rank")
-
-        while (parent.hasChildNodes())
-            parent.removeChild(parent.firstChild)
-
         fetch("/rank")
         .then(async (response) => {
             const result = await response.json()
-            
+            const parent = document.getElementById("rank")
+
+            parent.innerHTML = ""
+
             getRank(result, parent)
         })
     })
+    .catch (err => alert(err))
 })
