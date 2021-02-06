@@ -8,7 +8,7 @@ https://prime-number-discriminator.herokuapp.com/
 - CSS
 - JavaScript
 
-### Back
+### Server
 - Node.js
 
 ### DB
