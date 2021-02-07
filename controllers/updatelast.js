@@ -36,7 +36,7 @@ exports.updateLast = (req, res) => {
     Prime
     .findOneAndUpdate(
         { num: memo }, 
-        { outcome: result, $inc: { count: 1 }, time: moment().format("YYYY-MM-DD HH:mm") }, 
+        { outcome: result, $inc: { count: 1 }, time: moment().format("YYYY-MM-DD HH:mm:ss") }, 
         { upsert: true, setDefaultsOnInsert: true, new: true }, 
         function (err, value) {
             if (err)

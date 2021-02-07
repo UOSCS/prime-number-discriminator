@@ -8,6 +8,6 @@ exports.getLast = (req, res) => {
         else
             res.json(value)
     })
-    .sort({ time: -1, _id: -1 })
+    .sort({ time: -1 })
     .limit(10)
 }
