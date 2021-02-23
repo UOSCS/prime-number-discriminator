@@ -9,7 +9,7 @@ https://prime-number-discriminator.herokuapp.com/
     - [Front](#front)
     - [Server](#server)
     - [DB](#db)
-    - [Clout](#cloud)
+    - [Cloud](#cloud)
 - [개발 일지](#개발-일지)
     - [210108](#1-210108-프론트---백-통신-실습)
     - [210118](#2-210118-db-연결)
@@ -52,7 +52,7 @@ https://prime-number-discriminator.herokuapp.com/
 2. 서버로 데이터 전송
 3. 소수인지 판별 후 DB에 저장
 4. 최근 검색된 10개 항목 DB로부터 가져와서 `last`에 띄우기
-5. 가장 많이 참조된 10개 항목 B로부터 가져와서 `rank`에 띄우기
+5. 가장 많이 참조된 10개 항목 DB로부터 가져와서 `rank`에 띄우기
 
 ### 3. 210124 Heroku 연동
 - #### Node.js <-> Heroku 연동
@@ -80,7 +80,6 @@ https://prime-number-discriminator.herokuapp.com/
         fetch("/rank")
         .then(async (response) => {
             const result = await response.json()
-            ...
     ```
 
     이미 존재하는 데이터를 전부 삭제 후 비동기 요청을 보냈다. 응답이 오기까지 시간이 걸리기 때문에 깜박임이 생겼다.
