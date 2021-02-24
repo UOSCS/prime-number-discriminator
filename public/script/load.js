@@ -31,7 +31,7 @@ resultBtn
     })
     .then(async (response) => {
         const element = await response.json()
-        if(typeof(element) == 'string')
+        if(!element)
             throw element
         const parent = document.getElementById("last")
 
@@ -48,5 +48,5 @@ resultBtn
             getRank(result, parent)
         })
     })
-    .catch (err => alert(err))
+    .catch (() => alert("Enter a positive integer"))
 })

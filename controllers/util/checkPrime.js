@@ -2,7 +2,7 @@ module.exports = function (num) {
     let result = ""
 
     if(num != parseInt(num) || num < 1)
-        result = "Enter a positive integer."
+        result = null
     else if(num == 1)
         result = "False"
     else if(num <= 3)

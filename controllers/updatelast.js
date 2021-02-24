@@ -9,20 +9,24 @@ exports.updateLast = (req, res) => {
     const userInput = req.body.text
     const result = checkPrime(userInput)
 
-    Prime
-    .findOneAndUpdate(
-        { num: userInput }, 
-        { outcome: result, $inc: { count: 1 }, time: moment().format("YYYY-MM-DD HH:mm:ss") }, 
-        { upsert: true, setDefaultsOnInsert: true, new: true }, 
-        function (err, value) {
-            if (err) {
-                res.json(err)
-                console.log(err)
+    if(result) {
+        Prime
+        .findOneAndUpdate(
+            { num: userInput }, 
+            { outcome: result, $inc: { count: 1 }, time: moment().format("YYYY-MM-DD HH:mm:ss") }, 
+            { upsert: true, setDefaultsOnInsert: true, new: true }, 
+            function (err, value) {
+                if (err) {
+                    res.json(err)
+                    console.log(err)
+                }
+                else {
+                    res.json(value)
+                    console.log(value)
+                }
             }
-            else {
-                res.json(value)
-                console.log(value)
-            }
-        }
-    )
+        )
+    } else {
+        res.json(result)
+    }
 }
