@@ -13,7 +13,7 @@ exports.updateLast = (req, res) => {
     .findOneAndUpdate(
         { num: userInput }, 
         { outcome: result, $inc: { count: 1 }, time: moment().format("YYYY-MM-DD HH:mm:ss") }, 
-        { upsert: true, setDefaultsOnInsert: true }, 
+        { upsert: true, setDefaultsOnInsert: true, new: true }, 
         function (err, value) {
             if (err) {
                 res.json(err)
