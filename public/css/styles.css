@@ -76,4 +76,17 @@ td {
   width: 150px;
 }
 
+/* Footer */
+footer {
+  margin-bottom: 70px;
+  text-align: center;
+  font-weight: lighter;
+  font-family: "Montserrat", sans-serif;
+}
+
+/* fatorization */
+.fatorization {
+  border-bottom: thin solid gray;
+}
+
 /*# sourceMappingURL=styles.css.map */
