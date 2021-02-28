@@ -76,4 +76,12 @@ td {
   width: 150px;
 }
 
+/* Footer */
+footer {
+  margin-bottom: 70px;
+  text-align: center;
+  font-weight: lighter;
+  font-family: "Montserrat", sans-serif;
+}
+
 /*# sourceMappingURL=styles.css.map */

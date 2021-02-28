@@ -1,26 +1,10 @@
-fetch("/last")
-.then(async (response) => {
-    const result = await response.json()
-    const parent = document.getElementById("last")
-    
-    getLast(parent, result)
-})
-
-fetch("/rank")
-.then(async (response) => {
-    const result = await response.json()
-    const parent = document.getElementById("rank")
-
-    getRank(result, parent)
-})
-
 const resultBtn = document.getElementById("btn")
 
 resultBtn
 .addEventListener("click", () => {
     const text = document.getElementById("input").value
     // POST
-    fetch("/update_last", {
+    fetch("/result", {
         method: "POST",
         body: JSON.stringify({
             text: text,
@@ -31,22 +15,16 @@ resultBtn
     })
     .then(async (response) => {
         const element = await response.json()
-        if(!element)
-            throw element
-        const parent = document.getElementById("last")
+        const last = document.getElementById("last")
+        const rank = document.getElementById("rank")
 
-        updateLast(parent, element)
+        if(!element.last)
+            throw new Error("Enter a positive integer")
+        else {
+            rank.innerHTML = ""
+            updateRank(rank, element.rank)
+            updateLast(last, element.last)
+        }
     })
-    .then(() => {
-        fetch("/rank")
-        .then(async (response) => {
-            const result = await response.json()
-            const parent = document.getElementById("rank")
-
-            parent.innerHTML = ""
-
-            getRank(result, parent)
-        })
-    })
-    .catch (() => alert("Enter a positive integer"))
+    .catch (error => alert(error))
 })

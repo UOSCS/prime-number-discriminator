@@ -1,25 +1,4 @@
-function getLast(parent, result) {
-    result.forEach((element) => {
-        const newTr = document.createElement("tr")
-        const newTimeTd = document.createElement("td")
-        const newNumTd = document.createElement("td")
-        const newOutcomeTd = document.createElement("td")
-        const timeTdText = document.createTextNode(element.time.slice(11, 16))
-        const numTdText = document.createTextNode(element.num)
-        const outcomeTdText = document.createTextNode(element.outcome)
-
-        newTimeTd.appendChild(timeTdText)
-        newNumTd.appendChild(numTdText)
-        newOutcomeTd.appendChild(outcomeTdText)
-        newTr.appendChild(newTimeTd)
-        newTr.appendChild(newNumTd)
-        newTr.appendChild(newOutcomeTd)
-
-        parent.appendChild(newTr)
-    })
-}
-
-function getRank(result, parent) {
+function updateRank(parent, result) {
     let ranking = 1
     result.forEach((element) => {
         const newTr = document.createElement("tr")
@@ -57,7 +36,7 @@ function updateLast(parent, element) {
     const numTdText = document.createTextNode(element.num)
     const outcomeTdText = document.createTextNode(element.outcome)
     const firstChild = document.querySelector("#last > tr")
-    const lastChild = document.querySelectorAll("#last > tr")[9]
+    const lastChild = document.querySelector("#last > tr:last-child")
 
     newTimeTd.appendChild(timeTdText)
     newNumTd.appendChild(numTdText)

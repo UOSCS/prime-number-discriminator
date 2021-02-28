@@ -1,21 +1,22 @@
 const express = require("express")
 const router = express.Router()
 
-const UpdateHandler = require("../controllers/updatelast")
+const UpdateHandler = require("../controllers/update")
 const LastHandler = require("../controllers/last")
 const RankHandler = require("../controllers/rank")
 
-router.get("/", (req, res) => {
-    res.render("index")
+router.get("/", async (req, res) => {
+    const last = await LastHandler.getLast()
+    const rank = await RankHandler.getRank()
+    
+    res.render("index", { lastList: last, rankList: rank })
 })
-router.get("/last", (req, res) => {
-    LastHandler.getLast(req, res)
-})
-router.get("/rank", (req, res) => {
-    RankHandler.getRank(req, res)
-})
-router.post("/update_last", (req, res) => {
-    UpdateHandler.updateLast(req, res)
+
+router.post("/result", async (req, res) => {
+    const result = await UpdateHandler.update(req)
+    const rank = await RankHandler.getRank()
+
+    res.json({ last: result, rank: rank })
 })
 
 module.exports = router

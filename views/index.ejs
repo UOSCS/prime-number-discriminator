@@ -1,57 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<%- include("./partials/header") %> 
 
-    <!-- css -->
-    <link rel="stylesheet" href="/css/styles.css" />
-    <!-- favicon -->
-    <link rel="icon" href="/img/favicon.ico" />
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&family=Montserrat:ital,wght@1,300&family=Sacramento&display=swap" rel="stylesheet"/>
-    <title>Prime number discriminator</title>
-  </head>
+<div class="main-container">
+  <h1 class="title">Prime number discriminator</h1>
+  <p class="description">
+    Write a number below to determine if it is a prime number.
+  </p>
+  <p class="description">
+    Then press the <span>Result</span> button to check the result.
+  </p>
 
-  <body>
-    <div class="main-container">
-      <h1 class="title">Prime number discriminator</h1>
-      <p class="description">
-        Write a number below to determine if it is a prime number.
-      </p>
-      <p class="description">
-        Then press the <span>Result</span> button to check the result.
-      </p>
-      <input id="input" type="text" name="" />
-      <button id="btn">Result</button>
-      <div class="container">
-        <table class="table item">
-          <thead>
-            <tr>
-              <th>Time</th>
-              <th>Number</th>
-              <th>Outcome</th>
-            </tr>
-          </thead>
-          <tbody id="last"></tbody>
-        </table>
+  <input id="input" name="input" autocomplete="off" autofocus/>
+  <button id="btn" type="submit">Result</button>
 
-        <table class="table item">
-          <thead>
-            <tr>
-              <th>Ranking</th>
-              <th>Number</th>
-              <th>Outcome</th>
-              <th>Count</th>
-            </tr>
-          </thead>
-          <tbody id="rank"></tbody>
-        </table>
-      </div>
-    </div>
+  <div class="container">
+    <table class="table item">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Number</th>
+          <th>Outcome</th>
+        </tr>
+      </thead>
+      <tbody id="last">
+        <% for(let i = 0; i < 10; i++) {  %>
+          <tr>
+            <td><%= lastList[i].time.slice(11, 16) %></td>
+            <td><%= lastList[i].num %></td>
+            <td><%= lastList[i].outcome %></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
 
-    <script src="/script/common.js"></script>
-    <script src="/script/load.js"></script>
-  </body>
-</html>
+    <table class="table item">
+      <thead>
+        <tr>
+          <th>Ranking</th>
+          <th>Number</th>
+          <th>Outcome</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody id="rank">
+        <% for(let i = 0; i < 10; i++) {  %>
+          <tr>
+            <td><%= i + 1 %></td>
+            <td><%= rankList[i].num %></td>
+            <td><%= rankList[i].outcome %></td>
+            <td><%= rankList[i].count %></td>
+          </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%- include("./partials/footer") %> 
