@@ -15,15 +15,15 @@ resultBtn
     })
     .then(async (response) => {
         const element = await response.json()
-        const last = document.getElementById("last")
-        const rank = document.getElementById("rank")
 
-        if(!element.last)
+        document.getElementById("input").value = ""
+
+        if(!element.last) {
             throw new Error("Enter a positive integer")
+        }
         else {
-            rank.innerHTML = ""
-            updateRank(rank, element.rank)
-            updateLast(last, element.last)
+            updateRank(element.rank)
+            updateLast(element.last)
         }
     })
     .catch (error => alert(error))

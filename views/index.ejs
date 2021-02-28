@@ -9,7 +9,7 @@
     Then press the <span>Result</span> button to check the result.
   </p>
 
-  <input id="input" name="input" autocomplete="off" autofocus/>
+  <input id="input" name="input" autocomplete="off" autofocus>
   <button id="btn" type="submit">Result</button>
 
   <div class="container">
@@ -19,6 +19,7 @@
           <th>Time</th>
           <th>Number</th>
           <th>Outcome</th>
+          <th>Factors</th>
         </tr>
       </thead>
       <tbody id="last">
@@ -27,6 +28,7 @@
             <td><%= lastList[i].time.slice(11, 16) %></td>
             <td><%= lastList[i].num %></td>
             <td><%= lastList[i].outcome %></td>
+            <td><input class="checkbox" type="checkbox" value="<%= lastList[i].num %>"></td>
           </tr>
         <% } %>
       </tbody>
@@ -39,6 +41,7 @@
           <th>Number</th>
           <th>Outcome</th>
           <th>Count</th>
+          <th>Factors</th>
         </tr>
       </thead>
       <tbody id="rank">
@@ -48,6 +51,7 @@
             <td><%= rankList[i].num %></td>
             <td><%= rankList[i].outcome %></td>
             <td><%= rankList[i].count %></td>
+            <td><input class="checkbox" type="checkbox" value="<%= rankList[i].num %>"></td>
           </tr>
         <% } %>
       </tbody>
