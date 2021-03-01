@@ -18,8 +18,8 @@ https://prime-number-discriminator.herokuapp.com/
     - [210130 MVC모델 적용](#5-210130-mvc모델-적용)
     - [210206 `rank` 기능 개선](#6-210206-rank-업데이트-시-깜박임-해결)
     - [210221 OAuth 구현](#7-210221-oauth-실습)
-    - [210228 EJS 리팩토링 & 소인수분해 구현](#8-ejs-리팩토링--소인수분해-구현)
-    - [210301 Bootstrap 적용](#9-bootstrap-적용)
+    - [210228 EJS 리팩토링 & 소인수분해 구현](#8-210228-ejs-리팩토링--소인수분해-구현)
+    - [210301 Bootstrap 적용](#9-210301-bootstrap-적용)
 
 <hr>
 
