@@ -111,4 +111,5 @@ https://prime-number-discriminator.herokuapp.com/
     `last`, `rank`테이블에 있는 `Checkbox`클릭 시 해당 숫자의 소인수분해 결과를 볼 수 있다.
 
 ### 9. Bootstrap 적용
-- #### 사이트에 `Bootstrap 5.0`버전을 적용하였다. 
+- #### Bootstrap 5.0 적용
+    현재 사이트에 `Bootstrap 5.0`버전을 적용한 브랜치 `feature/bootstrap`을 생성하였다. 기존 UI보다 썩 마음에 들지 않아 `merge`는 하지 않았다.
