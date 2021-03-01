@@ -17,6 +17,7 @@ resultBtn
         const element = await response.json()
 
         document.getElementById("input").value = ""
+        document.getElementById("input").focus()
 
         if(!element.last) {
             throw new Error("Enter a positive integer")

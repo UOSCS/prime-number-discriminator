@@ -1,6 +1,7 @@
 <%- include("./partials/header") %> 
 
-<div class="main-container">
+<div class="container-fluid main-container">
+  
   <h1 class="title">Prime number discriminator</h1>
   <p class="description">
     Write a number below to determine if it is a prime number.
@@ -8,12 +9,12 @@
   <p class="description">
     Then press the <span>Result</span> button to check the result.
   </p>
+  <input id="input" class="col-4" name="input" autocomplete="off" autofocus>
+  <button id="btn" class="col-3 btn btn-info " type="submit">Result</button>
 
-  <input id="input" name="input" autocomplete="off" autofocus>
-  <button id="btn" type="submit">Result</button>
-
-  <div class="container">
-    <table class="table item">
+  <div class="row">
+    <table class="table col">
+      <caption>The 10 most recently referenced numbers</caption>
       <thead>
         <tr>
           <th>Time</th>
@@ -34,7 +35,8 @@
       </tbody>
     </table>
 
-    <table class="table item">
+    <table class="table col">
+      <caption>The 10 most referenced numbers</caption>
       <thead>
         <tr>
           <th>Ranking</th>

@@ -1,24 +1,25 @@
 /* Body */
 body {
   background-color: #fcf8e8;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* Main container */
 .main-container {
-  margin: 100px 0 100px;
+  margin-top: 100px;
   text-align: center;
 }
 
 /* Title */
 .title {
   font-family: "Sacramento", cursive;
+  font-weight: 500;
   font-size: 120px;
   margin-bottom: 30px;
 }
 
 /* Description */
 .description {
-  font-family: "Montserrat", sans-serif;
   font-size: 25px;
 }
 
@@ -30,7 +31,6 @@ span {
 /* Input */
 #input {
   font-size: 30px;
-  width: 30%;
   height: 30px;
   display: block;
   margin: 30px auto;
@@ -52,24 +52,20 @@ span {
   color: white;
 }
 
-/* Container */
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-@media (max-width: 1000px) {
-  .container {
-    grid-template-columns: 1fr;
-  }
-}
 /* Table */
 .table {
   text-align: center;
-  font-family: "Montserrat", sans-serif;
   font-size: 30px;
-  margin: 70px auto 0;
-  border-spacing: 10px;
+  margin: 70px 70px 0;
+}
+
+caption {
+  caption-side: top;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 900;
+  white-space: nowrap;
 }
 
 td {
@@ -81,7 +77,6 @@ footer {
   margin-bottom: 70px;
   text-align: center;
   font-weight: lighter;
-  font-family: "Montserrat", sans-serif;
 }
 
 /* fatorization */
