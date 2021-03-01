@@ -18,13 +18,15 @@ https://prime-number-discriminator.herokuapp.com/
     - [210130 MVC모델 적용](#5-210130-mvc모델-적용)
     - [210206 `rank` 기능 개선](#6-210206-rank-업데이트-시-깜박임-해결)
     - [210221 OAuth 구현](#7-210221-oauth-실습)
+    - [210228 EJS 리팩토링 & 소인수분해 구현]()
+    - [210301 Bootstrap 적용]()
 
 <hr>
 
 ## 사용된 기술 스택
 
 ### Front
-- HTML
+- EJS
 - SCSS
 - CSS
 - JavaScript
@@ -101,3 +103,12 @@ https://prime-number-discriminator.herokuapp.com/
 ### 7. 210221 OAuth 실습
 - #### 카카오계정으로 로그인 구현
     소수판별기와 어울리지는 않지만 공부삼아 구현해보았다. `OAuth`의 기본 동작만 구현하였고, 기존 사이트에는 회원가입 및 로그인 기능이 없기 때문에, 현재는 `Local Repository`의 `feature/oauth`에만 유지중이다.
+
+### 8. EJS 리팩토링 & 소인수분해 구현
+- #### EJS 리팩토링
+    사이트에 처음 접속 & 새로고침 시 클라이언트에게 보여지는 `last`, `rank`테이블을 `EJS 템플릿`을 이용하여 구현하였다. 기존 방식보다 `route.js`와 `updateTables.js`, `common.js`파일이 훨씬 간단해졌다.
+- #### 소인수분해 구현
+    `last`, `rank`테이블에 있는 `Checkbox`클릭 시 해당 숫자의 소인수분해 결과를 볼 수 있다.
+
+### 9. Bootstrap 적용
+사이트에 `Bootstrap 5.0`버전을 적용하였다. 
