@@ -67,7 +67,13 @@ function updateLast(element) {
     newTr.appendChild(newFactorsTd)
 
     parent.insertBefore(newTr, firstChild)
-    parent.removeChild(lastChild)
+
+    if(lastChild.children.length === 1) {
+        parent.removeChild(lastChild.previousSibling)
+        parent.removeChild(lastChild)    
+    } else {
+        parent.removeChild(lastChild)
+    }
 }
 
 function factorize(num) {
